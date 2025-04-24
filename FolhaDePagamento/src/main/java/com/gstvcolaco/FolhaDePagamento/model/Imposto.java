@@ -1,6 +1,9 @@
 package com.gstvcolaco.FolhaDePagamento.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -8,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 
 public class Imposto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private double tinns1;
     private double alinss1;
     private double tinss2;
