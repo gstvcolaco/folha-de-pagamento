@@ -42,17 +42,17 @@ public class PagamentoController {
             model.addAttribute("funcionario", funcionario.get());
             return "insere-funcionario";
         }
-        return "redirect:/";
+        return "redirect:/folha-de-pagamento/";
     }
     @GetMapping ("/exclui-funcionario")
     public String excluifuncionario(@RequestParam("id") Integer id){
         fr.deleteById(id);
-        return "redirect:/";
+        return "redirect:/folha-de-pagamento/";
     }
     @PostMapping("/salvar-funcionario")
     public String salvarFuncionario(@ModelAttribute("funcionario") Funcionario funcionario){
         fr.save(funcionario);
-        return "redirect:/";
+        return "redirect:/folha-de-pagamento/";
     }
 
     @GetMapping("/imposto")
