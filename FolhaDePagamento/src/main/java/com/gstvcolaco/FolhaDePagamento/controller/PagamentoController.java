@@ -27,20 +27,20 @@ public class PagamentoController {
     public String listarFuncionario(Model model){
         listaFuncionario = fr.findAll();
         model.addAttribute("listafuncionario", listaFuncionario);
-        return "templates/lista-funcionarios";
+        return "lista-funcionario";
     }
     @GetMapping("/novo-funcionario")
     public String novoFuncionario(Model model){
         Funcionario funcionario = new Funcionario();
         model.addAttribute("funcionario", funcionario);
-        return "templates/insere-funcionario";
+        return "insere-funcionario";
     }
     @GetMapping("/edita-funcionario")
     public String editaFuncionario(@RequestParam("id") Integer id, Model model){
         Optional<Funcionario> funcionario = fr.findById(id);
         if (funcionario.isPresent()){
             model.addAttribute("funcionario", funcionario.get());
-            return "templates/insere-funcionario";
+            return "insere-funcionario";
         }
         return "redirect:/";
     }
@@ -59,14 +59,14 @@ public class PagamentoController {
     public String listarImposto(Model model){
         listaImposto = ir.findAll();
         model.addAttribute("listaimposto", listaImposto);
-        return "templates/lista-impostos";
+        return "lista-imposto";
     }
 
     @GetMapping("/novo-imposto")
     public String novoImposto(Model model){
         Imposto imposto = new Imposto();
         model.addAttribute("imposto", imposto);
-        return "templates/insere-imposto";
+        return "insere-imposto";
     }
 
     @GetMapping("/edita-imposto")
@@ -74,7 +74,7 @@ public class PagamentoController {
         Optional<Imposto> imposto = ir.findById(id);
         if (imposto.isPresent()){
             model.addAttribute("imposto", imposto.get());
-            return "templates/insere-imposto";
+            return "insere-imposto";
         }
         return "redirect:/imposto";
     }

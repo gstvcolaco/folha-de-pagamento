@@ -19,7 +19,7 @@
         <header>
             <nav class="nav-bar" id="logo">
                 <div class="nav-logo">
-                    <img src="img/ladrao.png" id="img-logo-nav">
+                    <img th:src="@{'/img/ladrao.png'}" id="img-logo-nav">
                     <h1>Folha de <span>Pagamento</span></h1>
                 </div>
                 <div class="nav-list">
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="search-button">
-                    <a th:href="" ><i class='bx bx-search-alt'></i></a>
+                    <a  ><i class='bx bx-search-alt'></i></a>
                 </div>
     
                 <div class="mobile-menu-icon">
@@ -44,7 +44,7 @@
                         <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i class='bx bxs-skull'></i></i></a></li>
                 </ul>
                 <div class="search-button">
-                    <a th:href="" ><i class='bx bx-search-alt'></i></a>
+                    <a  ><i class='bx bx-search-alt'></i></a>
                 </div>
             </div>
         </header>
@@ -239,7 +239,7 @@
                         </a>
                         </td>
                 </tr>
-                <tr>
+                <tr th:each="imposto : ${impostos}">
                     <th></th>
                     <th></th>
                     <th></th>

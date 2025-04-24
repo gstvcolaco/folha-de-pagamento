@@ -18,7 +18,7 @@ function reload(){
 var logo = document.querySelector(".nav-logo")
 logo.addEventListener('click', foridx)
 function foridx(){
-    window.location.href = "/caixa/"
+    window.location.href = "/folha-de-pagamento/"
 }
 //funçao de aparecer as tabela
 var coll = document.getElementsByClassName("collapsible");
