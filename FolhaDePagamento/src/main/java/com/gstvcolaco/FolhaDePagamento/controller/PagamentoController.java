@@ -23,50 +23,50 @@ public class PagamentoController {
     ImpostoRepository ir;
     List<Imposto> listaImposto;
 
-    @GetMapping("/funcionario")
+    @GetMapping("/")
     public String listarFuncionario(Model model){
         listaFuncionario = fr.findAll();
         model.addAttribute("listafuncionario", listaFuncionario);
-        return "paginas/lista-funcionarios";
+        return "templates/lista-funcionarios";
     }
     @GetMapping("/novo-funcionario")
     public String novoFuncionario(Model model){
         Funcionario funcionario = new Funcionario();
         model.addAttribute("funcionario", funcionario);
-        return "paginas/insere-funcionario";
+        return "templates/insere-funcionario";
     }
     @GetMapping("/edita-funcionario")
     public String editaFuncionario(@RequestParam("id") Integer id, Model model){
         Optional<Funcionario> funcionario = fr.findById(id);
         if (funcionario.isPresent()){
             model.addAttribute("funcionario", funcionario.get());
-            return "paginas/insere-funcionario";
+            return "templates/insere-funcionario";
         }
-        return "redirect:/funcionario";
+        return "redirect:/";
     }
     @GetMapping ("/exclui-funcionario")
     public String excluifuncionario(@RequestParam("id") Integer id){
         fr.deleteById(id);
-        return "redirect:/funcionario";
+        return "redirect:/";
     }
     @PostMapping("/salvar-funcionario")
     public String salvarFuncionario(@ModelAttribute("funcionario") Funcionario funcionario){
         fr.save(funcionario);
-        return "redirect:/funcionario";
+        return "redirect:/";
     }
 
     @GetMapping("/imposto")
     public String listarImposto(Model model){
         listaImposto = ir.findAll();
         model.addAttribute("listaimposto", listaImposto);
-        return "paginas/lista-impostos";
+        return "templates/lista-impostos";
     }
 
     @GetMapping("/novo-imposto")
     public String novoImposto(Model model){
         Imposto imposto = new Imposto();
         model.addAttribute("imposto", imposto);
-        return "paginas/insere-imposto";
+        return "templates/insere-imposto";
     }
 
     @GetMapping("/edita-imposto")
@@ -74,7 +74,7 @@ public class PagamentoController {
         Optional<Imposto> imposto = ir.findById(id);
         if (imposto.isPresent()){
             model.addAttribute("imposto", imposto.get());
-            return "paginas/insere-imposto";
+            return "templates/insere-imposto";
         }
         return "redirect:/imposto";
     }
