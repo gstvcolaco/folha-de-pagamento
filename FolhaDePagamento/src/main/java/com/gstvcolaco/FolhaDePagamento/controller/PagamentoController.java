@@ -76,19 +76,19 @@ public class PagamentoController {
             model.addAttribute("imposto", imposto.get());
             return "insere-imposto";
         }
-        return "redirect:/imposto";
+        return "redirect:/folha-de-pagamento/imposto";
     }
 
     @GetMapping("/exclui-imposto")
     public String excluiImposto(@RequestParam("id") Integer id){
         ir.deleteById(id);
-        return "redirect:/imposto";
+        return "redirect:/folha-de-pagamento/imposto";
     }
 
     @PostMapping("/salvar-imposto")
     public String salvarImposto(@ModelAttribute("imposto") Imposto imposto){
         ir.save(imposto);
-        return "redirect:/imposto";
+        return "redirect:/folha-de-pagamento/imposto";
     }
 
 }

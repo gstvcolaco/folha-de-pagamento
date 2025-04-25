@@ -61,7 +61,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th></th>
                     <th th:text="${imposto.tinns1}"></th>
                     <th th:text="${imposto.alinss1}"></th>
@@ -76,9 +76,9 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th th:text="${imposto.tinns1}"></th>
-                    <th th:text="${imposto.tinns2}"></th>
+                    <th th:text="${imposto.tinss2}"></th>
                     <th th:text="${imposto.alinss2}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -91,9 +91,9 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
-                    <th th:text="${imposto.tinns2}"></th>
-                    <th th:text="${imposto.tinns3}"></th>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tinss2}"></th>
+                    <th th:text="${imposto.tinss3}"></th>
                     <th th:text="${imposto.alinss3}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -106,9 +106,9 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
-                    <th th:text="${imposto.tinns3}"></th>
-                    <th th:text="${imposto.tinns4}"></th>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tinss3}"></th>
+                    <th th:text="${imposto.tinss4}"></th>
                     <th th:text="${imposto.alinss4}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -132,7 +132,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th th:text="${imposto.tsf}"></th>
                     <th th:text="${imposto.vsf}"></th>
                     <td>
@@ -159,7 +159,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th></th>
                     <th th:text="${imposto.tirrf1}"></th>
                     <th> - </th>
@@ -175,10 +175,10 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th th:text="${imposto.tirrf1}"></th>
                     <th th:text="${imposto.tirrf2}"></th>
-                    <th th:text="${imposto.airrf2}"></th>
+                    <th th:text="${imposto.alirrf2}"></th>
                     <th th:text="${imposto.dirrf2}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -191,10 +191,10 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th th:text="${imposto.tirrf2}"></th>
                     <th th:text="${imposto.tirrf3}"></th>
-                    <th th:text="${imposto.airrf3}"></th>
+                    <th th:text="${imposto.alirrf3}"></th>
                     <th th:text="${imposto.dirrf3}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -207,10 +207,10 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th th:text="${imposto.tirrf3}"></th>
                     <th th:text="${imposto.tirrf4}"></th>
-                    <th th:text="${imposto.airrf4}"></th>
+                    <th th:text="${imposto.alirrf4}"></th>
                     <th th:text="${imposto.dirrf4}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -223,10 +223,10 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${listaImposto}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th th:text="${imposto.tirrf4}"></th>
                     <th th:text="${imposto.tirrf5}"></th>
-                    <th th:text="${imposto.airrf5}"></th>
+                    <th th:text="${imposto.alirrf5}"></th>
                     <th th:text="${imposto.dirrf5}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
@@ -239,12 +239,12 @@
                         </a>
                         </td>
                 </tr>
-                <tr th:each="imposto : ${impostos}">
+                <tr th:each="imposto : ${listaimposto}">
                     <th></th>
                     <th></th>
                     <th></th>
                     <th>Deduçao por dependente</th>
-                    <th th:text="${imposto.dedpdep}"></th>
+                    <th th:text="${imposto.deppdep}"></th>
                     <td>
                         <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
                         class="btn btn-primary" title="Edita prato"><i class='bx bx-pencil'></i>
