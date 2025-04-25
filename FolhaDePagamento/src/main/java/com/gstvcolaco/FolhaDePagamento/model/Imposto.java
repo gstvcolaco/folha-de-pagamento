@@ -14,6 +14,7 @@ public class Imposto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
     private double tinns1;
     private double alinss1;
     private double tinss2;
@@ -37,8 +38,15 @@ public class Imposto {
     private double alirrf5;
     private double dirrf5;
     private double deppdep;
+    
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public double getTinns1() {
         return tinns1;
     }
