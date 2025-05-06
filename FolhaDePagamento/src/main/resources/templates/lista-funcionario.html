@@ -66,7 +66,7 @@
                 <tr th:each="funcionario : ${listafuncionario}">
                     <th th:text="${funcionario.id}"></th>
                     <th th:text="${funcionario.nome}"></th>
-                    <th th:text="${funcionario.vt}"></th>
+                    <th th:text="${funcionario.vt}?'sim':'nâo'"></th>
                     <th th:text="${funcionario.salbruto}"></th>
                     <th th:text="${funcionario.dep14}"></th>
                     <th th:text="${funcionario.depir}"></th>
