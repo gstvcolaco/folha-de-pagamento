@@ -1,9 +1,9 @@
-package com.info.folha.model;
+package com.gstvcolaco.FolhaDePagamento.model;
 
 public class CalculaFolha {
 
     private Funcionario funcionario;
-    private Tabela tabela;
+    private Imposto imposto;
     private double inss;
     private double sf;
     private double vt;
@@ -14,60 +14,60 @@ public class CalculaFolha {
     public void calcula() {
         //Calculo do Vale Transporte
         if (funcionario.getVt().equals("S")) {
-            vt = funcionario.getSalbase() * 6 / 100;
+            vt = funcionario.getSalbruto() * 6 / 100;
         } else {
             vt = 0;
         }
         //Cálculo do Salário Família
-        if (funcionario.getSalbase() <= tabela.getTsf()) {
-            sf = funcionario.getDep14() * tabela.getVsf();
+        if (funcionario.getSalbruto() <= imposto.getTsf()) {
+            sf = funcionario.getDep14() * imposto.getVsf();
         } else {
             sf = 0;
         }
         //Calculo do INSS
-        if (funcionario.getSalbase() <= tabela.getTinss1()) {
-            inss = funcionario.getSalbase() * tabela.getAinss1() / 100;
+        if (funcionario.getSalbruto() <= imposto.getTinns1()) {
+            inss = funcionario.getSalbruto() * imposto.getAlinss1()/ 100;
         }else{
-            p= tabela.getTinss1()*tabela.getAinss1()/100;
-            if (funcionario.getSalbase() <= tabela.getTinss2()) {
-                inss = p+(funcionario.getSalbase()-tabela.getTinss1()) *  tabela.getAinss2()/100;
+            p= imposto.getTinns1()*imposto.getAlinss1()/100;
+            if (funcionario.getSalbruto() <= imposto.getTinss2()) {
+                inss = p+(funcionario.getSalbruto()-imposto.getTinns1()) *  imposto.getAlinss2()/100;
             }else{
-                p=p+(tabela.getTinss2()-tabela.getTinss1())*tabela.getAinss2()/100;
-                if(funcionario.getSalbase() <= tabela.getTinss3()) {
-                    inss = p+(funcionario.getSalbase()-tabela.getTinss2())*tabela.getAinss3()/100;
+                p=p+(imposto.getTinss2()-imposto.getTinns1())*imposto.getAlinss2()/100;
+                if(funcionario.getSalbruto() <= imposto.getTinss3()) {
+                    inss = p+(funcionario.getSalbruto()-imposto.getTinss2())*imposto.getAlinss3()/100;
                 }else{
-                    p=p+(tabela.getTinss3()-tabela.getTinss2())*tabela.getAinss3()/100;
-                    if (funcionario.getSalbase() <= tabela.getTinss4()){
-                        inss = p+(funcionario.getSalbase()-tabela.getTinss3())*tabela.getAinss4()/100;
+                    p=p+(imposto.getTinss3()-imposto.getTinss2())*imposto.getAlinss3()/100;
+                    if (funcionario.getSalbruto() <= imposto.getTinss4()){
+                        inss = p+(funcionario.getSalbruto()-imposto.getTinss3())*imposto.getAlinss4()/100;
                     }else{
-                        inss = p+      (tabela.getTinss4()-tabela.getTinss3())* tabela.getAinss4() /100;
+                        inss = p+(imposto.getTinss4()-imposto.getTinss3())* imposto.getAlinss4() /100;
                     }
                 }
             }
         }
         
         //Calculo do IRRF
-        double bc = funcionario.getSalbase() - inss - (funcionario.getDepir() * tabela.getDedpdep());
-        if(bc<= tabela.getTirrf1()){
+        double bc = funcionario.getSalbruto() - inss - (funcionario.getDepir() * imposto.getDeppdep());
+        if(bc<= imposto.getTirrf1()){
             irrf = 0;
         } else {
-            if (bc <= tabela.getTirrf2()) {
-                irrf = bc * (tabela.getAirrf2() / 100) - tabela.getDirrf2();
+            if (bc <= imposto.getTirrf2()) {
+                irrf = bc * (imposto.getAlirrf2() / 100) - imposto.getDirrf2();
             } else {
-                if (bc <= tabela.getTirrf3()){
-                    irrf = bc * (tabela.getAirrf3() / 100) - tabela.getDirrf3();
+                if (bc <= imposto.getTirrf3()){
+                    irrf = bc * (imposto.getAlirrf3() / 100) - imposto.getDirrf3();
                 } else {
-                    if (bc <= tabela.getTirrf4()){
-                        irrf = bc * (tabela.getAirrf4() / 100) - tabela.getDirrf4();
+                    if (bc <= imposto.getTirrf4()){
+                        irrf = bc * (imposto.getAlirrf4() / 100) - imposto.getDirrf4();
                     } else{
-                        irrf = bc * (tabela.getAirrf5() / 100) - tabela.getDirrf5();
+                        irrf = bc * (imposto.getAlirrf5() / 100) - imposto.getDirrf5();
                     }
                 }
             }
         }
         
         //Calculo do Salario Liquido
-        salliq = funcionario.getSalbase() - inss + sf - vt - irrf;
+        salliq = funcionario.getSalbruto() - inss + sf - vt - irrf;
     }
 
     /**
@@ -87,15 +87,15 @@ public class CalculaFolha {
     /**
      * @return the tabela
      */
-    public Tabela getTabela() {
-        return tabela;
+    public Imposto getImposto() {
+        return imposto;
     }
 
     /**
      * @param tabela the tabela to set
      */
-    public void setTabela(Tabela tabela) {
-        this.tabela = tabela;
+    public void setImposto(Imposto imposto) {
+        this.imposto = imposto;
     }
 
     /**
