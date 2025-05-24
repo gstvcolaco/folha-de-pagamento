@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <!-- or -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <title>Folha de pagamento</title>
+    <link rel="stylesheet" th:href="@{/css/colors.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/imposto.css}">
+    <!--sexo-->
+</head>
+
+<body>
+    <navbar>
+        <header>
+            <nav class="nav-bar" id="logo">
+                <div class="nav-logo">
+                    <img th:src="@{'/img/ladrao.png'}" id="img-logo-nav">
+                    <h1>Folha de <span>Pagamento</span></h1>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i
+                                    class='bx bx-recycle'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/novo-funcionario}" class="nav-link">Novo
+                                Funcionario <i class='bx bxs-cloud-upload'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i
+                                    class='bx bxs-skull'></i></i></a></li>
+                    </ul>
+                </div>
+                <div class="search-button">
+                    <a><i class='bx bx-search-alt'></i></a>
+                </div>
+
+                <div class="mobile-menu-icon">
+                    <button onclick="menuShow()"><i class='bx bx-menu' style='color:#ffffff'></i></button>
+                </div>
+            </nav>
+            <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a>
+                    </li>
+                    <li class="nav-item"><a th:href="@{/folha-de-pagamento/novo-funcionario}" class="nav-link">Novo
+                            Funcionario <i class='bx bxs-cloud-upload'></i></a></li>
+                    <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i
+                                class='bx bxs-skull'></i></i></a></li>
+                </ul>
+                <div class="search-button">
+                    <a><i class='bx bx-search-alt'></i></a>
+                </div>
+            </div>
+        </header>
+    </navbar>
+    <corpo>
+        <div class="tables-tax">
+          <div class="tabelinhas">
+            <form action="#" th:action="@{/folha-de-pagamento/salvar-imposto}" th:object="${imposto}" method="POST">
+              <h1>Inss</h1>
+              <div class="content">
+                <h2>salário de contribuição</h2>
+                <input type="hidden" id="idd" th:field="*{id}">
+                <label for="tinns1">tinss1</label>
+                <input type="number" id="tinns1" step="0.01" required th:field="*{tinns1}" />
+                <label for="tinss2">tinss2</label>
+                <input type="number" id="tinss2" step="0.01" required th:field="*{tinss2}" />
+                <label for="tinss3">tinss3</label>
+                <input type="number" id="tinss3" step="0.01" required th:field="*{tinss3}" />
+                <label for="tinss4">tinss4</label>
+                <input type="number" id="tinss4" step="0.01" required th:field="*{tinss4}" />
+      
+                <h2> alíquota</h2>
+                <label for="alinss1">alinss1</label>
+                <input type="number" id="alinss1" step="0.01" required th:field="*{alinss1}" />
+                <label for="alinss2">alinss2</label>
+                <input type="number" id="alinss2" step="0.01" required th:field="*{alinss2}" />
+                <label for="alinss3">alinss3</label>
+                <input type="number" id="alinss3" step="0.01" required th:field="*{alinss3}" />
+                <label for="alinss4">alinss4</label>
+                <input type="number" id="alinss4" step="0.01" required th:field="*{alinss4}" />
+              </div>
+      
+              <h1>Salário Família</h1>
+              <div class="content">
+                <h2>Sálario</h2>
+                <label for="tsf">tsf</label>
+                <input type="number" id="tsf" step="0.01" required th:field="*{tsf}" />
+                <h2>Valor por dependente</h2>
+                <label for="vsf">vsf</label>
+                <input type="number" id="vsf" step="0.01" required th:field="*{vsf}" />
+              </div>
+      
+              <h1>IRRF</h1>
+              <div class="content">
+                <h2>Tetos</h2>
+                <label for="tirrf1">tirrf1</label>
+                <input type="number" id="tirrf1" step="0.01" min="0" required th:field="*{tirrf1}" />
+                <label for="tirrf2">tirrf2</label>
+                <input type="number" id="tirrf2" step="0.01" min="0" required th:field="*{tirrf2}" />
+                <label for="tirrf3">tirrf3</label>
+                <input type="number" id="tirrf3" step="0.01" min="0" required th:field="*{tirrf3}" />
+                <label for="tirrf4">tirrf4</label>
+                <input type="number" id="tirrf4" step="0.01" min="0" required th:field="*{tirrf4}" />
+      
+                <h2>alíquota</h2>
+                <label for="alirrf2">alirrf2</label>
+                <input type="number" id="alirrf2" step="0.01" min="0" required th:field="*{alirrf2}" />
+                <label for="alirrf3">alirrf3</label>
+                <input type="number" id="alirrf3" step="0.01" min="0" required th:field="*{alirrf3}" />
+                <label for="alirrf4">alirrf4</label>
+                <input type="number" id="alirrf4" step="0.01" min="0" required th:field="*{alirrf4}" />
+                <label for="alirrf5">alirrf5</label>
+                <input type="number" id="alirrf5" step="0.01" min="0" required th:field="*{alirrf5}" />
+      
+                <h2>Dedução</h2>
+                <label for="dirrf2">dirrf2</label>
+                <input type="number" id="dirrf2" step="0.01" min="0" required th:field="*{dirrf2}" />
+                <label for="dirrf3">dirrf3</label>
+                <input type="number" id="dirrf3" step="0.01" min="0" required th:field="*{dirrf3}" />
+                <label for="dirrf4">dirrf4</label>
+                <input type="number" id="dirrf4" step="0.01" min="0" required th:field="*{dirrf4}" />
+                <label for="dirrf5">dirrf5</label>
+                <input type="number" id="dirrf5" step="0.01" min="0" required th:field="*{dirrf5}" />
+      
+                <h2>Dedução por dependente</h2>
+                <label for="deppdep">dedpdep</label>
+                <input type="number" id="deppdep" step="0.01" min="0" required th:field="*{deppdep}" />
+      
+                <div class="buttons">
+                  <button type="submit" id="cadastrar"><span>Salvar</span></button>
+                  <button id="cancelar" th:href="@{/folha-de-pagamento/funcionario}"><span>Cancelar</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </corpo>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

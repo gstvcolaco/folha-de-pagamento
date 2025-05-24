@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+		<!-- or -->
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/colors.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/lista.css}">
+    <title>Folha de pagamento</title>
+</head>
+<body>
+    <navbar>
+        <header>
+            <nav class="nav-bar" id="logo">
+                <div class="nav-logo">
+                    <img th:src="@{'/img/ladrao.png'}" id="img-logo-nav">
+                    <h1>Folha de <span>Pagamento</span></h1>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/novo-funcionario}" class="nav-link">Novo Funcionario <i class='bx bxs-cloud-upload'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i class='bx bxs-skull'></i></i></a></li>
+                    </ul>
+                </div>
+                <div class="search-button">
+                    <a><i class='bx bx-search-alt'></i></a>
+                </div>
+    
+                <div class="mobile-menu-icon">
+                    <button onclick="menuShow()"><i class='bx bx-menu' style='color:#ffffff'  ></i></button>
+                </div>
+            </nav>
+            <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/novo-funcionario}" class="nav-link">Novo Funcionario <i class='bx bxs-cloud-upload'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i class='bx bxs-skull'></i></i></a></li>
+                </ul>
+                <div class="search-button">
+                    <a><i class='bx bx-search-alt'></i></a>
+                </div>
+            </div>
+        </header>
+    </navbar>
+    <corpo>    
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nome</th>
+                    <th>V. Transporte</th>
+                    <th>Salario Bruto</th>
+                    <th>dep.14</th>
+                    <th>dep. ir</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="funcionario : ${listafuncionario}">
+                    <td th:text="${funcionario.id}"></td>
+                    <td th:text="${funcionario.nome}"></td>
+                    <td th:text="${funcionario.vt}?'sim':'não'"></td>
+                    <td th:text="${funcionario.salbruto}"></td>
+                    <td th:text="${funcionario.dep14}"></td>
+                    <td th:text="${funcionario.depir}"></td>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-funcionario(id=${funcionario.id})}"
+                        class="btn btn-primary" title="Edita funcionario"><i class='bx bx-pencil'></i>
+                        </a>
+                       <a th:href="@{/folha-de-pagamento/exclui-funcionario(id=${funcionario.id})}"
+                        class="btn btn-danger" title="Exclui funcionario"
+                        onclick="if (!(confirm('Tem certeza que deseja excluir?'))) return false">
+                        <i class='bx bxs-trash' ></i>
+                        </a>
+                        </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </corpo>
+    
+    
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

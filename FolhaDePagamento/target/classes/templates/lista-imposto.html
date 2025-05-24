@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+		<!-- or -->
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/colors.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+    <link rel="stylesheet" th:href="@{/css/lista.css}">
+    <title>Folha de pagamento</title>
+</head>
+<body>
+    <navbar>
+        <header>
+            <nav class="nav-bar" id="logo">
+                <div class="nav-logo">
+                    <img th:src="@{'/img/ladrao.png'}" id="img-logo-nav">
+                    <h1>Folha de <span>Pagamento</span></h1>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/novo-funcionario}" class="nav-link">Novo Funcionario <i class='bx bxs-cloud-upload'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i class='bx bxs-skull'></i></i></a></li>
+                    </ul>
+                </div>
+                <div class="search-button">
+                    <a  ><i class='bx bx-search-alt'></i></a>
+                </div>
+    
+                <div class="mobile-menu-icon">
+                    <button onclick="menuShow()"><i class='bx bx-menu' style='color:#ffffff'  ></i></button>
+                </div>
+            </nav>
+            <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/novo-funcionario}" class="nav-link">Novo Funcionario <i class='bx bxs-cloud-upload'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/folha-de-pagamento/imposto}" class="nav-link">impostos <i class='bx bxs-skull'></i></i></a></li>
+                </ul>
+                <div class="search-button">
+                    <a  ><i class='bx bx-search-alt'></i></a>
+                </div>
+            </div>
+        </header>
+    </navbar>
+    <corpo>    
+        <div class="table">
+            <table>
+                <h3>Inss</h3>
+                <thead>
+                <tr>
+                    <th>Piso inss</th>
+                    <th>Teto inss</th>
+                    <th>Alíquota</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th></th>
+                    <th th:text="${imposto.tinns1}"></th>
+                    <th th:text="${imposto.alinss1}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tinns1}"></th>
+                    <th th:text="${imposto.tinss2}"></th>
+                    <th th:text="${imposto.alinss2}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tinss2}"></th>
+                    <th th:text="${imposto.tinss3}"></th>
+                    <th th:text="${imposto.alinss3}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tinss3}"></th>
+                    <th th:text="${imposto.tinss4}"></th>
+                    <th th:text="${imposto.alinss4}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                </tbody>
+            </table>
+            <table>
+                <h3>Salário Famália</h3>
+                <thead>
+                <tr>
+                    <th>Teto</th>
+                    <th>Valor por dependente</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tsf}"></th>
+                    <th th:text="${imposto.vsf}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                </tbody>
+            </table>
+            <table>
+                <h3>Imposto de Renda Retido na Fonte</h3>
+                <thead>
+                <tr>
+                    <th>Piso irrf</th>
+                    <th>Teto irrf</th>
+                    <th>Alíquota</th>
+                    <th>Dedução</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th></th>
+                    <th th:text="${imposto.tirrf1}"></th>
+                    <th> - </th>
+                    <th> - </th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tirrf1}"></th>
+                    <th th:text="${imposto.tirrf2}"></th>
+                    <th th:text="${imposto.alirrf2}"></th>
+                    <th th:text="${imposto.dirrf2}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tirrf2}"></th>
+                    <th th:text="${imposto.tirrf3}"></th>
+                    <th th:text="${imposto.alirrf3}"></th>
+                    <th th:text="${imposto.dirrf3}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tirrf3}"></th>
+                    <th th:text="${imposto.tirrf4}"></th>
+                    <th th:text="${imposto.alirrf4}"></th>
+                    <th th:text="${imposto.dirrf4}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th th:text="${imposto.tirrf4}"></th>
+                    <th> - </th>
+                    <th th:text="${imposto.alirrf5}"></th>
+                    <th th:text="${imposto.dirrf5}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                </tr>
+                <tr th:each="imposto : ${listaimposto}">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Deduçao por dependente</th>
+                    <th th:text="${imposto.deppdep}"></th>
+                    <th>
+                        <a th:href="@{/folha-de-pagamento/edita-imposto(id=${imposto.id})}"
+                        class="btn btn-primary" title="Editar"><i class='bx bx-pencil'></i>
+                        </a>
+                        </th>
+                    
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </corpo>
+    
+    
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

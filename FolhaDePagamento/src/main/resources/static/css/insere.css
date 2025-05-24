@@ -1,0 +1,74 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+.inserir {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+	border-radius: 10px;
+    width:50%;
+    margin: auto;
+    top: 2dvh;
+    text-align: center;
+    height: auto;
+    font-size: large;
+    font-weight: 600;
+    padding-top: 10px;
+}
+.inserir h2{
+    color: var(--primary);
+}
+#description{
+    resize: none;
+}
+.inserir label{
+    color: var(--white)
+}
+.inserir input, textarea{
+    width: 45%;
+    margin: auto;
+}
+#cadastrar{
+    width: 40%;
+    margin: auto;
+}
+
+  /*boato cadastro*/
+  #cadastrar{
+    width: 30%;
+    height: 2.5rem;
+    border-radius: 15px;
+    background-color: var(--white);
+    border: none;
+    cursor: pointer;
+  }
+  #cadastrar span{
+    font-weight: bold;
+    font-size: larger;
+  }
+  #cadastrar:hover{
+    background-color: rgb(17, 206, 17);
+    transition: all 0.6s;
+  }
+  #cancelar{
+    width: 30%;
+    height: 2.5rem;
+    border-radius: 15px;
+    background-color: var(--white);
+    border: none;
+    cursor: pointer;
+  }
+  #cancelar span{
+    font-weight: bold;
+    font-size: larger;
+  }
+  #cancelar:hover{
+    background-color: rgb(223, 46, 46);
+    transition: all 0.6s;
+  }
+  .buttons{
+    margin-bottom: 25px;
+  }
